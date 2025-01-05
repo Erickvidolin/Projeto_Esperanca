@@ -117,18 +117,21 @@
                 data: "12/01",
                 descricao: "Feira de saúde",
                 endereco: "Rua das Flores, 123, Centro",
+                hora:"Das 09:00 as 13:00 horas",
                 dataCompleta: "2025-01-12"
             },
             {
                 data: "12/01 a 17/01",
                 descricao: "Semana Calebe",
                 endereco: "R. Presidente Artur Costa e Silva, 1655",
+                hora:"Das 19:45 as 20:00 horas",
                 dataCompleta: "2025-01-12"
             },
             {
                 data: "20/01 a 24/01",
                 descricao: "Escola Cristã de Férias",
                 endereco: "R. Presidente Artur Costa e Silva, 1655 <br>  R. Diamiro Olicheski da Silva,43 ",
+                hora:"Das 14:00 as 17:00 horas",
                 dataCompleta: "2025-01-20"
             }
         ];
@@ -174,6 +177,8 @@
                         <div class="absolute text-left left-8 text-white text-sm w-72 md:text-md font-semibold">
                             ${evento.data} - ${evento.descricao} <br>
                             <span class="text-xs italic">${evento.endereco}</span>
+                            <br>
+                            <span class="text-xs italic">${evento.hora}</span>
                         </div>
                     </div>
                 `;
