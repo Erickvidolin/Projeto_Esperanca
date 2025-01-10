@@ -113,28 +113,28 @@
 
         // Definindo os eventos na timeline com endereço (pode ser ajustado conforme necessário)
         const eventos = [
-            {
-                data: "12/01",
-                descricao: "Feira de saúde",
-                endereco: "Rua das Flores, 123, Centro",
-                hora:"Das 09:00 as 13:00 horas",
-                dataCompleta: "2025-01-12"
-            },
-            {
-                data: "12/01 a 17/01",
-                descricao: "Semana Calebe",
-                endereco: "R. Presidente Artur Costa e Silva, 1655",
-                hora:"Das 19:45 as 20:00 horas",
-                dataCompleta: "2025-01-12"
-            },
-            {
-                data: "20/01 a 24/01",
-                descricao: "Escola Cristã de Férias",
-                endereco: "R. Presidente Artur Costa e Silva, 1655 <br>  R. Diamiro Olicheski da Silva,43 ",
-                hora:"Das 14:00 as 17:00 horas",
-                dataCompleta: "2025-01-20"
-            }
-        ];
+    {
+        data: "19/01",
+        descricao: "Feira de saúde",
+        endereco: "Praça ao lado do ginasio de esportes,<br> Rua Augusto Staben, Jardim Paulista",
+        hora: "Das 09:00 as 13:00 horas",
+        dataCompleta: "2025-01-19"
+    },
+    {
+        data: "20/01 a 24/01",
+        descricao: "Semana Calebe",
+        endereco: "R. Presidente Artur Costa e Silva, 1655",
+        hora: "Das 19:45 as 20:00 horas",
+        dataCompleta: "2025-01-20"
+    },
+    {
+        data: "20/01 a 24/01",
+        descricao: "Escola Cristã de Férias",
+        endereco: "R. Presidente Artur Costa e Silva, 1655 <br>  R. Diamiro Olicheski da Silva,43 ",
+        hora: "Das 14:00 as 17:00 horas",
+        dataCompleta: "2025-01-20"
+    }
+];
 
         // Data inicial e final
         const dataInicio = new Date("2025-01-04");
@@ -142,11 +142,13 @@
 
         // Função para calcular o progresso da timeline
         function calcularProgresso(inicio, fim) {
-            const hoje = new Date();
-            const total = fim - inicio;
-            const progresso = hoje - inicio;
-            return Math.min(Math.max((progresso / total) * 100, 0), 100);
-        }
+    const agora = new Date();
+    const totalMilissegundos = fim - inicio;
+    const progressoMilissegundos = agora - inicio;
+
+    return Math.min(Math.max((progressoMilissegundos / totalMilissegundos) * 100, 0), 100);
+}
+
 
         // Função para renderizar a timeline e eventos
         function renderizarEventos() {
@@ -171,19 +173,19 @@
                 const posicaoPercentual = (diasAteEvento / totalDias) * 100;
 
                 // Criar marcador de evento com o endereço
-                const marcadorHtml = `
-                    <div class="relative flex items-center justify-center" style="top: ${posicaoPercentual}%; transform: translateY(-50%); left: -80px">
-                        <div class="w-5 h-5 rounded-full border-2 border-white"></div>
-                        <div class="absolute text-left left-8 text-white text-sm w-72 md:text-md font-semibold">
-                            ${evento.data} - ${evento.descricao} <br>
-                            <span class="text-xs italic">${evento.endereco}</span>
-                            <br>
-                            <span class="text-xs italic">${evento.hora}</span>
-                        </div>
-                    </div>
-                `;
-                eventMarkers.innerHTML += marcadorHtml;
-            });
+    const marcadorHtml = `
+        <div class="relative flex items-center justify-center" style="top: ${posicaoPercentual}%; transform: translateY(-50%); left: -80px">
+            <div class="w-5 h-5 rounded-full border-2 border-orange-400"></div>
+            <div class="absolute text-left left-8 text-white text-sm w-72 md:text-md font-semibold">
+                ${evento.data} - ${evento.descricao} <br>
+                <span class="text-xs italic">${evento.endereco}</span>
+                <br>
+                <span class="text-xs italic">${evento.hora}</span>
+            </div>
+        </div>
+    `;
+    eventMarkers.innerHTML += marcadorHtml;
+});
         }
 
         // Chamar a função para renderizar os eventos
