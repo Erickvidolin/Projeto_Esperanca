@@ -114,11 +114,11 @@
         // Definindo os eventos na timeline com endereço (pode ser ajustado conforme necessário)
         const eventos = [
     {
-        data: "19/01",
+        data: "12/01",
         descricao: "Feira de saúde",
-        endereco: "Praça ao lado do ginasio de esportes,<br> Rua Augusto Staben, Jardim Paulista",
+        endereco: "Praça ao lado do ginásio de esportes,<br> Rua Augusto Staben, Jardim Paulista",
         hora: "Das 09:00 as 13:00 horas",
-        dataCompleta: "2025-01-19"
+        dataCompleta: "2025-01-12"
     },
     {
         data: "20/01 a 24/01",
@@ -146,7 +146,7 @@
     const totalMilissegundos = fim - inicio;
     const progressoMilissegundos = agora - inicio;
 
-    return Math.min(Math.max((progressoMilissegundos / totalMilissegundos) * 100, 0), 100);
+    return Math.min(Math.max((progressoMilissegundos / totalMilissegundos) * 65, 0), 100);
 }
 
 
