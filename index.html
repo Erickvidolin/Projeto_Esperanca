@@ -52,20 +52,7 @@
                 </button>
             </a>
         </div>
-        <h2 class="text-white font-bold text-xl md:text-2xl font-roboto mb-6">Fique por Dentro!</h2>
-        <div class="timeline h-96 rounded-md bg-orange-500 shadow-md shadow-black text-white flex py-5">
-            <div class="relative flex flex-col items-center w-80 mt-6">
-                <!-- Linha da Timeline -->
-                <div id="timeline" class="absolute top-0 left-1/4  transform -translate-x-1/2 bg-orange-600 w-6 rounded-full" style="height: 230px;"></div>
-        
-                <!-- Barra de Progresso -->
-                <div id="progressBar" class="absolute top-0 left-1/4  transform -translate-x-1/2 bg-white w-4 rounded-full" style="height: 0%;"></div>
-        
-                <!-- Marcadores de Eventos -->
-                <div id="eventMarkers" class="space-y-16"></div>
-            </div>
-        </div>
-        <footer class="w-full h-auto mt-5 py-5">
+            <footer class="w-full h-auto mt-5 py-5">
             <div class="flex flex-col w-full h-3/6 border-white rounded-md bg-orange-500 p-3 shadow-md shadow-black">
                 <div class="w-12/12 text-center">
                     <h2 class="mb-3 text-white font-bold text-lg">Canais de TV</h2>
@@ -111,85 +98,7 @@
             window.location.href = url;
         });
 
-        // Definindo os eventos na timeline com endereço (pode ser ajustado conforme necessário)
-        const eventos = [
-    {
-        data: "12/01",
-        descricao: "Feira de saúde",
-        endereco: "Praça ao lado do ginásio de esportes,<br> Rua Augusto Staben, Jardim Paulista",
-        hora: "Das 09:00 as 13:00 horas",
-        dataCompleta: "2025-01-12"
-    },
-    {
-        data: "20/01 a 24/01",
-        descricao: "Semana Calebe",
-        endereco: "R. Presidente Artur Costa e Silva, 1655",
-        hora: "Das 19:45 as 20:00 horas",
-        dataCompleta: "2025-01-20"
-    },
-    {
-        data: "20/01 a 24/01",
-        descricao: "Escola Cristã de Férias",
-        endereco: "R. Presidente Artur Costa e Silva, 1655 <br>  R. Diamiro Olicheski da Silva,43 ",
-        hora: "Das 14:00 as 17:00 horas",
-        dataCompleta: "2025-01-20"
-    }
-];
-
-        // Data inicial e final
-        const dataInicio = new Date("2025-01-04");
-        const dataFim = new Date("2025-01-31");
-
-        // Função para calcular o progresso da timeline
-        function calcularProgresso(inicio, fim) {
-    const agora = new Date();
-    const totalMilissegundos = fim - inicio;
-    const progressoMilissegundos = agora - inicio;
-
-    return Math.min(Math.max((progressoMilissegundos / totalMilissegundos) * 65, 0), 100);
-}
-
-
-        // Função para renderizar a timeline e eventos
-        function renderizarEventos() {
-            const eventMarkers = document.getElementById('eventMarkers');
-            const progressBar = document.getElementById('progressBar');
-            const timeline = document.getElementById('timeline');
-
-            // Calculando a porcentagem de progresso
-            const progresso = calcularProgresso(dataInicio, dataFim);
-            progressBar.style.height = `${progresso}%`; // Atualiza a barra de progresso
-
-            // Calcular o número total de dias entre o início e o fim
-            const totalDias = (dataFim - dataInicio) / (1000 * 60 * 60 * 24);
-
-            // Atualizando a altura da linha para cobrir a altura desejada
-            timeline.style.height = `292px`; // Definindo a altura da linha
-
-            // Para cada evento, calcular a posição e adicionar o marcador
-            eventos.forEach((evento) => {
-                const dataEvento = new Date(evento.dataCompleta);
-                const diasAteEvento = (dataEvento - dataInicio) / (1000 * 60 * 60 * 24);
-                const posicaoPercentual = (diasAteEvento / totalDias) * 100;
-
-                // Criar marcador de evento com o endereço
-    const marcadorHtml = `
-        <div class="relative flex items-center justify-center" style="top: ${posicaoPercentual}%; transform: translateY(-50%); left: -80px">
-            <div class="w-5 h-5 rounded-full border-2 border-orange-400"></div>
-            <div class="absolute text-left left-8 text-white text-sm w-72 md:text-md font-semibold">
-                ${evento.data} - ${evento.descricao} <br>
-                <span class="text-xs italic">${evento.endereco}</span>
-                <br>
-                <span class="text-xs italic">${evento.hora}</span>
-            </div>
-        </div>
-    `;
-    eventMarkers.innerHTML += marcadorHtml;
-});
-        }
-
-        // Chamar a função para renderizar os eventos
-        renderizarEventos();
+       
         
     </script>
 </body>
